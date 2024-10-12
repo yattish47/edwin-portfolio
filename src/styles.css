@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your custom styles here */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #202020;
+    }
+     /* Webkit browsers like Chrome, Safari */
+     ::-webkit-scrollbar {
+      width: 12px;
+  }
+  ::-webkit-scrollbar-track {
+      background: #111827; /* bg-gray-900 */
+  }
+  ::-webkit-scrollbar-thumb {
+      background-color: #ffffff;
+      border-radius: 20px;
+      border: 3px solid #111827; /* bg-gray-900 */
+  }
+
+  /* Firefox */
+  * {
+      scrollbar-width: thin;
+      scrollbar-color: #ffffff #111827;
+  }
