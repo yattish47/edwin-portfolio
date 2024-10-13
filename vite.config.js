@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
   build: {
@@ -17,13 +17,15 @@ export default defineConfig({
         require('autoprefixer'),
       ],
     }
-  },resolve: {
+  },
+  resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
+      // You may not need this alias unless you are using it in your code
       'flowbite': resolve(__dirname, 'node_modules/flowbite')
     }
   },
   optimizeDeps: {
     include: ['flowbite']
   }
-})
+});
