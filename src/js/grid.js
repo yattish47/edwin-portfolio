@@ -21,17 +21,17 @@ const photoCollections = {
     'Asher_s 1st Birthday (2024)': {
         title: 'Asher\'s 1st Birthday (2024)',
         photos: [
-            '../public/assets/Asher_s 1st Birthday (2024)/1.jpg',
-            '../public/assets/Asher_s 1st Birthday (2024)/2.jpg',
-            '../public/assets/Asher_s 1st Birthday (2024)/3.jpg',
-            '../public/assets/Asher_s 1st Birthday (2024)/4.jpg',
-            '../public/assets/Asher_s 1st Birthday (2024)/5.jpg',
-            '../public/assets/Asher_s 1st Birthday (2024)/6.jpg',
-            '../public/assets/Asher_s 1st Birthday (2024)/7.jpg',
-            '../public/assets/Asher_s 1st Birthday (2024)/8.jpg',
-            '../public/assets/Asher_s 1st Birthday (2024)/9.jpg',
-            '../public/assets/Asher_s 1st Birthday (2024)/10.jpg',
-            '../public/assets/Asher_s 1st Birthday (2024)/11.jpg',
+            './assets/Asher_s 1st Birthday (2024)/1.jpg',
+            './assets/Asher_s 1st Birthday (2024)/2.jpg',
+            './assets/Asher_s 1st Birthday (2024)/3.jpg',
+            './assets/Asher_s 1st Birthday (2024)/4.jpg',
+            './assets/Asher_s 1st Birthday (2024)/5.jpg',
+            './assets/Asher_s 1st Birthday (2024)/6.jpg',
+            './assets/Asher_s 1st Birthday (2024)/7.jpg',
+            './assets/Asher_s 1st Birthday (2024)/8.jpg',
+            './assets/Asher_s 1st Birthday (2024)/9.jpg',
+            './assets/Asher_s 1st Birthday (2024)/10.jpg',
+            './assets/Asher_s 1st Birthday (2024)/11.jpg',
            
             // ... more photos
         ]
