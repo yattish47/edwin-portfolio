@@ -107,14 +107,14 @@ const photoCollections = {
     'Sacha_s Nalangu (2023)': {
         title: 'Sacha\'s Nalangu (2023)',
         photos: [
-            './assets/Sacha_s Nalangu (2023)/1.jpg',
-            './assets/Sacha_s Nalangu (2023)/2.jpg',
+            './assets/Sacha_s Nalangu (2023)/1.JPG',
+            './assets/Sacha_s Nalangu (2023)/2.JPG',
             './assets/Sacha_s Nalangu (2023)/3.jpg',
             './assets/Sacha_s Nalangu (2023)/4.jpg',
             './assets/Sacha_s Nalangu (2023)/5.jpg',
             './assets/Sacha_s Nalangu (2023)/6.jpg',
             './assets/Sacha_s Nalangu (2023)/7.jpg',
-            './assets/Sacha_s Nalangu (2023)/8.jpg',
+            './assets/Sacha_s Nalangu (2023)/8.JPG',
             './assets/Sacha_s Nalangu (2023)/9.jpg',
         ]
     },
