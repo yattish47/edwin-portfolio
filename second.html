@@ -7,31 +7,31 @@
     <link rel="stylesheet" href="/src/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white min-h-screen p-8">
-    <nav class="bg-transparent border-gray-200">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+<body class="bg-gray-900 text-white min-h-screen p-4">
+    <nav class="bg-transparent border-gray-200 max-sm:px-4">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2">
           <a href="/" class="flex items-center space-x-1 rtl:space-x-reverse">
-            <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-               <!-- Camera body -->
-               <rect x="10" y="30" width="80" height="50" rx="5" ry="5" fill="#ffff"/>
-               
-               <!-- Camera lens -->
-               <circle cx="50" cy="55" r="20" fill="#4A4A4A"/>
-               <circle cx="50" cy="55" r="15" fill="#333333"/>
-               <circle cx="50" cy="55" r="10" fill="#4A4A4A"/>
-               
-               <!-- Camera flash -->
-               <rect x="70" y="35" width="15" height="10" rx="2" ry="2" fill="#FFD700"/>
-               
-               <!-- Shutter button -->
-               <circle cx="80" cy="25" r="5" fill="#FF4136"/>
-               
-               <!-- Camera strap -->
-               <path d="M10 40 Q -10 50 10 60" stroke="#666666" stroke-width="4" fill="none"/>
-               <path d="M90 40 Q 110 50 90 60" stroke="#666666" stroke-width="4" fill="none"/>
-           </svg>
+              <svg class="w-28 h-16  sm:w-40 sm:h-20" viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Background circle -->
+                  <circle cx="50" cy="50" r="45" fill="#ffffff"/>
+                  
+                  <!-- Camera body -->
+                  <rect x="20" y="40" width="60" height="35" rx="5" ry="5" fill="#34495e"/>
+                  
+                  <!-- Camera lens -->
+                  <circle cx="50" cy="57.5" r="15" fill="#3498db"/>
+                  <circle cx="50" cy="57.5" r="10" fill="#2980b9"/>
+                  <circle cx="50" cy="57.5" r="5" fill="#fff"/>
+                  
+                  <!-- Camera flash -->
+                  <rect x="65" y="43" width="10" height="7" rx="2" ry="2" fill="#f1c40f"/>
+                  
+                  <!-- Name and Photography -->
+                  <text x="170" y="45" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">EDWIN</text>
+                  <text x="170" y="70" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">PHOTOGRAPHY</text>
+              </svg>
           </a>
-          <button data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+          <button data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
@@ -49,7 +49,7 @@
       <div class="py-4 overflow-y-auto">
           <ul class="space-y-2 font-medium">
              <li>
-                <a href="./index.html" class="flex items-center p-2 text-white rounded-lg dark:text-white transition ease-in-out duration-300 hover:bg-gray-100 hover:text-black dark:hover:bg-gray-700 group">
+                <a href="./index.html" class="flex items-center p-2 text-white rounded-lg dark:text-white transition ease-in-out duration-300 hover:bg-gray-100 hover:text-white dark:hover:bg-gray-700 group">
                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                       <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                       <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
@@ -58,7 +58,7 @@
                 </a>
              </li>
              <li>
-                <a href="./second.html" class="flex items-center p-2 text-white rounded-lg dark:text-white transition ease-in-out duration-300 hover:bg-gray-100 hover:text-black dark:hover:bg-gray-700 group">
+                <a href="./second.html" class="flex items-center p-2 text-white rounded-lg dark:text-white transition ease-in-out duration-300 hover:bg-gray-100 hover:text-white dark:hover:bg-gray-700 group">
                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                       <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
                    </svg>
@@ -66,80 +66,21 @@
               
                 </a>
              </li>
-             <li>
-                <a href="#" class="flex items-center p-2 text-white rounded-lg dark:text-white transition ease-in-out duration-300 hover:bg-gray-100 hover:text-black dark:hover:bg-gray-700 group">
-                   <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
-                   </svg>
-                   <span class="flex-1 ms-3 whitespace-nowrap">Contact</span>
-                </a>
-             </li>
+            
              
           </ul>
        </div>
       </div>
     <div class="max-w-7xl mx-auto">
-        <h1 class="text-4xl font-bold mb-8">My Photos</h1>
+        <h1 class="text-4xl font-bold mb-8 max-sm:text-2xl max-sm:mt-4">My Photos</h1>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Photo 1 -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                <img src="./assets/1.jpg" alt="Summer Wedding 2023" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Summer Wedding 2023</h3>
-                </div>
-            </div>
-
-            <!-- Photo 2 -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                <img src="./assets/1.jpg" alt="City Nightscape" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">City Nightscape</h3>
-                </div>
-            </div>
-
-            <!-- Photo 3 -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                <img src="/placeholder.svg?height=300&width=400" alt="Mountain Retreat" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Mountain Retreat</h3>
-                </div>
-            </div>
-
-            <!-- Photo 4 -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                <img src="/placeholder.svg?height=300&width=400" alt="Beach Sunset Session" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Beach Sunset Session</h3>
-                </div>
-            </div>
-
-            <!-- Photo 5 -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                <img src="/placeholder.svg?height=300&width=400" alt="Corporate Event" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Corporate Event</h3>
-                </div>
-            </div>
-
-            <!-- Photo 6 -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                <img src="/placeholder.svg?height=300&width=400" alt="Family Portraits" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Family Portraits</h3>
-                </div>
-            </div>
-
-            <!-- Photo 7 -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                <img src="/placeholder.svg?height=300&width=400" alt="Nature Expedition" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Nature Expedition</h3>
-                </div>
-            </div>
+        <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+           
         </div>
     </div>
     <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="./js/photos.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
