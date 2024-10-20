@@ -7,3 +7,4 @@ import './js/photos.js'; // Adjust the path if necessary
 
 // Your other JavaScript code here
 console.log('Main script loaded');
+
