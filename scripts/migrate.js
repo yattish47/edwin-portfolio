@@ -47,8 +47,9 @@ const db = admin.firestore();
 
 const IMAGE_EXTS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG', '.WEBP']);
 
-function jsDelivrUrl(filePath) {
-  return `https://cdn.jsdelivr.net/gh/${GITHUB_OWNER}/${GITHUB_REPO}@${GITHUB_BRANCH}/${filePath}`;
+function rawGitHubUrl(filePath) {
+  const encoded = filePath.split('/').map(s => encodeURIComponent(s)).join('/');
+  return `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${encoded}`;
 }
 
 // ─── Migration ────────────────────────────────────────────────────────────────
@@ -83,7 +84,7 @@ for (const folderName of folders) {
   for (let i = 0; i < photoFiles.length; i++) {
     const filename = photoFiles[i];
     const githubPath = `public/assets/${folderName}/${filename}`;
-    const url = jsDelivrUrl(githubPath);
+    const url = rawGitHubUrl(githubPath);
 
     await colRef.collection('photos').add({
       url,

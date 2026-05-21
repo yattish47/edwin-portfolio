@@ -21,9 +21,10 @@ function isGitHubConfigured() {
   return owner && repo && token;
 }
 
-function jsDelivrUrl(path) {
+function rawGitHubUrl(filePath) {
   const { owner, repo, branch } = getGitHubConfig();
-  return `https://cdn.jsdelivr.net/gh/${owner}/${repo}@${branch}/${path}`;
+  const encoded = filePath.split('/').map(s => encodeURIComponent(s)).join('/');
+  return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encoded}`;
 }
 
 // ─── GitHub REST API ──────────────────────────────────────────────────────────
@@ -305,7 +306,7 @@ async function handleUpload(files) {
     const base64 = await fileToBase64(file);
     await commitFile(githubPath, base64, `Add photo to collection ${currentCollectionId}`);
 
-    const url = jsDelivrUrl(githubPath);
+    const url = rawGitHubUrl(githubPath);
 
     await addDoc(collection(db, 'collections', currentCollectionId, 'photos'), {
       url,
