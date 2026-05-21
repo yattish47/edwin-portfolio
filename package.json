@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "firebase": "^12.13.0",
-    "flowbite": "^2.5.2"
+    "flowbite": "^2.5.2",
+    "glightbox": "^3.3.1"
   },
   "engines": {
     "node": "24.x"

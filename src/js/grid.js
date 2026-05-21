@@ -1,12 +1,13 @@
 import { db } from './firebase.js';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import GLightbox from 'glightbox';
 
 function createPhotoElement(src, alt, onClick, isCollection = false) {
     const div = document.createElement('div');
     div.className = 'bg-gray-800 rounded-lg overflow-hidden shadow-lg cursor-pointer flex flex-col';
     div.innerHTML = `
         <div class="relative w-full ${isCollection ? 'h-64' : 'h-48'} overflow-hidden">
-            <img src="${src}" alt="${alt}" class="w-full h-full object-cover transition-opacity duration-300 ease-in-out">
+            <img src="${src}" alt="${alt}" loading="lazy" class="w-full h-full object-cover transition-opacity duration-300 ease-in-out">
             <div class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-25"></div>
         </div>
         ${!isCollection ? `
@@ -106,10 +107,19 @@ async function loadCollection(collectionId) {
     grid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6';
     container.appendChild(grid);
 
-    photos.forEach(p => {
-        const el = createPhotoElement(p.url, col.title, () => {}, true);
-        grid.appendChild(el);
+    photos.forEach((p, i) => {
+        const wrapper = document.createElement('a');
+        wrapper.href = p.url;
+        wrapper.className = 'glightbox';
+        wrapper.dataset.gallery = 'collection';
+        wrapper.dataset.description = col.title;
+
+        const el = createPhotoElement(p.url, col.title, e => e.preventDefault(), true);
+        wrapper.appendChild(el);
+        grid.appendChild(wrapper);
     });
+
+    GLightbox({ selector: '.glightbox' });
 }
 
 const urlParams = new URLSearchParams(window.location.search);
