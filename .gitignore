@@ -1,2 +1,9 @@
 # Node modules
 node_modules/
+
+# Secrets — never commit these
+scripts/serviceAccountKey.json
+.env
+
+# Build output
+dist/

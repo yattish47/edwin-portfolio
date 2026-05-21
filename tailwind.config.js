@@ -1,8 +1,12 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     './index.html',
     './second.html',
+    './admin/**/*.{html,js}',
     './src/**/*.{js,ts,jsx,tsx}',
     './node_modules/flowbite/**/*.js'
   ],
@@ -14,26 +18,14 @@ module.exports = {
       },
       keyframes: {
         typewriter: {
-          to: {
-            left: '100%',
-          },
+          to: { left: '100%' },
         },
         blink: {
-          '0%': {
-            opacity: '0',
-          },
-          '0.1%': {
-            opacity: '1',
-          },
-          '50%': {
-            opacity: '1',
-          },
-          '50.1%': {
-            opacity: '0',
-          },
-          '100%': {
-            opacity: '0',
-          },
+          '0%': { opacity: '0' },
+          '0.1%': { opacity: '1' },
+          '50%': { opacity: '1' },
+          '50.1%': { opacity: '0' },
+          '100%': { opacity: '0' },
         },
       },
     },

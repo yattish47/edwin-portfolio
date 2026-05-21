@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edwin's Portfolio — Admin</title>
+  <link rel="stylesheet" href="../src/styles.css" />
+</head>
+<body class="bg-gray-900 text-white min-h-full">
+
+  <!-- Login View -->
+  <div id="view-login" class="min-h-screen flex items-center justify-center px-4">
+    <div class="w-full max-w-sm bg-gray-800 rounded-xl p-8 shadow-2xl">
+      <h1 class="text-2xl font-bold mb-1">Edwin's Portfolio</h1>
+      <p class="text-gray-400 mb-6 text-sm">Admin access only</p>
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-sm text-gray-300 mb-1">Email</label>
+          <input id="email" type="email" required autocomplete="email"
+            class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-white" />
+        </div>
+        <div>
+          <label class="block text-sm text-gray-300 mb-1">Password</label>
+          <input id="password" type="password" required autocomplete="current-password"
+            class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-white" />
+        </div>
+        <p id="login-error" class="hidden text-red-400 text-sm"></p>
+        <button type="submit"
+          class="w-full bg-white text-gray-900 font-bold py-2 rounded-lg hover:bg-gray-200 transition">
+          Sign In
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard View -->
+  <div id="view-dashboard" class="hidden min-h-screen flex flex-col">
+    <nav class="bg-gray-800 px-6 py-4 flex justify-between items-center">
+      <h1 class="text-lg font-bold">Edwin's Portfolio — Admin</h1>
+      <button id="sign-out-btn" class="text-sm text-gray-400 hover:text-white transition">Sign out</button>
+    </nav>
+    <div class="flex-1 p-6 max-w-7xl mx-auto w-full">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold">Collections</h2>
+        <button id="new-collection-btn"
+          class="bg-white text-gray-900 font-semibold px-4 py-2 rounded-lg hover:bg-gray-200 transition text-sm">
+          + New Collection
+        </button>
+      </div>
+      <div id="collection-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+    </div>
+  </div>
+
+  <!-- Collection Detail View -->
+  <div id="view-collection" class="hidden min-h-screen flex flex-col">
+    <nav class="bg-gray-800 px-6 py-4 flex justify-between items-center">
+      <button id="back-btn" class="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        All Collections
+      </button>
+      <button id="sign-out-btn-2" class="text-sm text-gray-400 hover:text-white transition">Sign out</button>
+    </nav>
+    <div class="flex-1 p-6 max-w-7xl mx-auto w-full">
+      <div class="flex items-center gap-4 mb-6">
+        <input id="col-title"
+          class="text-2xl font-bold bg-transparent border-b border-transparent hover:border-gray-500 focus:border-white focus:outline-none py-1 flex-1 transition"
+          placeholder="Collection name" />
+        <button id="delete-col-btn" class="text-sm text-red-400 hover:text-red-300 transition whitespace-nowrap">
+          Delete Collection
+        </button>
+      </div>
+
+      <!-- Upload zone -->
+      <div id="drop-zone"
+        class="border-2 border-dashed border-gray-600 rounded-xl p-8 text-center cursor-pointer hover:border-gray-400 transition mb-2">
+        <p class="text-gray-400">Drag &amp; drop photos here, or <span class="text-white underline">click to browse</span></p>
+        <p class="text-gray-500 text-sm mt-1">JPG, PNG, WEBP — multiple files supported</p>
+        <input id="upload-input" type="file" accept="image/*" multiple class="hidden" />
+      </div>
+      <p id="upload-progress" class="hidden text-sm text-gray-400 mb-4 text-center"></p>
+
+      <!-- Photo grid -->
+      <div id="photo-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mt-4"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./admin.js"></script>
+</body>
+</html>

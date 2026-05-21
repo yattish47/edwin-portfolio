@@ -1,3 +1,6 @@
+import { db } from './firebase.js';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+
 function createPhotoElement(src, alt, onClick, isCollection = false) {
     const div = document.createElement('div');
     div.className = 'bg-gray-800 rounded-lg overflow-hidden shadow-lg cursor-pointer flex flex-col';
@@ -12,148 +15,76 @@ function createPhotoElement(src, alt, onClick, isCollection = false) {
         </div>
         ` : ''}
     `;
-    div.style.height = isCollection ? '16rem' : '18rem'; // 64px = 16rem, 48px + ~24px (for text) = 18rem
+    div.style.height = isCollection ? '16rem' : '18rem';
     div.addEventListener('click', onClick);
     return div;
 }
 
-const photoCollections = {
-    'Asher_s 1st Birthday (2024)': {
-        title: 'Asher\'s 1st Birthday (2024)',
-        photos: [
-            './assets/Asher_s 1st Birthday (2024)/1.jpg',
-            './assets/Asher_s 1st Birthday (2024)/2.jpg',
-            './assets/Asher_s 1st Birthday (2024)/3.jpg',
-            './assets/Asher_s 1st Birthday (2024)/4.jpg',
-            './assets/Asher_s 1st Birthday (2024)/5.jpg',
-            './assets/Asher_s 1st Birthday (2024)/6.jpg',
-            './assets/Asher_s 1st Birthday (2024)/7.jpg',
-            './assets/Asher_s 1st Birthday (2024)/8.jpg',
-            './assets/Asher_s 1st Birthday (2024)/9.jpg',
-            './assets/Asher_s 1st Birthday (2024)/10.jpg',
-            './assets/Asher_s 1st Birthday (2024)/11.jpg',
-           
-            // ... more photos
-        ]
-    },
-    'Father James 80th Birthday (2023)': {
-        title: 'Father James 80th Birthday (2023)',
-        photos: [
-            './assets/Father James 80th Birthday (2023)/1.jpg',
-            './assets/Father James 80th Birthday (2023)/2.jpg',
-            './assets/Father James 80th Birthday (2023)/3.jpg',
-            './assets/Father James 80th Birthday (2023)/4.jpg',
-            './assets/Father James 80th Birthday (2023)/5.jpg',
-            './assets/Father James 80th Birthday (2023)/6.jpg',
-            './assets/Father James 80th Birthday (2023)/7.jpg',
-            './assets/Father James 80th Birthday (2023)/8.jpg',
-            './assets/Father James 80th Birthday (2023)/9.jpg',
-            './assets/Father James 80th Birthday (2023)/10.jpg',
-        ]
-    },   
-     'Jennifer_s 21st Birthday Party (2024)': {
-        title: 'Jennifer\'s 21st Birthday Party (2024)',
-        photos: [
-            './assets/Jennifer_s 21st Birthday Party (2024)/1.jpg',
-            './assets/Jennifer_s 21st Birthday Party (2024)/2.jpg',
-            './assets/Jennifer_s 21st Birthday Party (2024)/3.jpg',
-            './assets/Jennifer_s 21st Birthday Party (2024)/4.jpg',
-            './assets/Jennifer_s 21st Birthday Party (2024)/5.jpg',
-            './assets/Jennifer_s 21st Birthday Party (2024)/6.jpg',
-            './assets/Jennifer_s 21st Birthday Party (2024)/7.jpg',
-            './assets/Jennifer_s 21st Birthday Party (2024)/8.jpg',
-            './assets/Jennifer_s 21st Birthday Party (2024)/9.jpg',
-            ]
-    },    'Mother_s Mary New Grotto (2024)': {
-        title: 'Mother\'s Mary New Grotto (2024)',
-        photos: [
-            './assets/Mother_s Mary New Grotto (2024)/1.jpg',
-            './assets/Mother_s Mary New Grotto (2024)/2.jpg',
-            './assets/Mother_s Mary New Grotto (2024)/3.jpg',
-            './assets/Mother_s Mary New Grotto (2024)/4.jpg',
-            './assets/Mother_s Mary New Grotto (2024)/5.jpg',
-            './assets/Mother_s Mary New Grotto (2024)/6.jpg',
-            './assets/Mother_s Mary New Grotto (2024)/7.jpg',
-            './assets/Mother_s Mary New Grotto (2024)/8.jpg',
-            './assets/Mother_s Mary New Grotto (2024)/9.jpg',
-        ]
-    },    'Passion Play (2023)': {
-        title: 'Passion Play (2023)',
-        photos: [
-            './assets/Passion Play (2023)/1.jpg',
-            './assets/Passion Play (2023)/2.jpg',
-            './assets/Passion Play (2023)/3.jpg',
-            './assets/Passion Play (2023)/4.jpg',
-            './assets/Passion Play (2023)/5.jpg',
-            './assets/Passion Play (2023)/6.jpg',
-            './assets/Passion Play (2023)/7.jpg',
-            './assets/Passion Play (2023)/8.jpg',
-            './assets/Passion Play (2023)/9.jpg',
-            './assets/Passion Play (2023)/10.jpg',
-        ]
-    },
-    'Sacha_s Baby Shower (2024)': {
-        title: 'Sacha\'s Baby Shower (2024)',
-        photos: [
-            './assets/Sacha_s Baby Shower (2024)/1.jpg',
-            './assets/Sacha_s Baby Shower (2024)/2.jpg',
-            './assets/Sacha_s Baby Shower (2024)/3.jpg',
-            './assets/Sacha_s Baby Shower (2024)/4.jpg',
-            './assets/Sacha_s Baby Shower (2024)/5.jpg',
-            './assets/Sacha_s Baby Shower (2024)/6.jpg',
-            './assets/Sacha_s Baby Shower (2024)/7.jpg',
-        ]
-    },
-    'Sacha_s Nalangu (2023)': {
-        title: 'Sacha\'s Nalangu (2023)',
-        photos: [
-            './assets/Sacha_s Nalangu (2023)/1.JPG',
-            './assets/Sacha_s Nalangu (2023)/2.JPG',
-            './assets/Sacha_s Nalangu (2023)/3.jpg',
-            './assets/Sacha_s Nalangu (2023)/4.jpg',
-            './assets/Sacha_s Nalangu (2023)/5.jpg',
-            './assets/Sacha_s Nalangu (2023)/6.jpg',
-            './assets/Sacha_s Nalangu (2023)/7.jpg',
-            './assets/Sacha_s Nalangu (2023)/8.JPG',
-            './assets/Sacha_s Nalangu (2023)/9.jpg',
-        ]
-    },
-};
+function showSpinner(container) {
+    container.innerHTML = `
+        <div class="col-span-full flex justify-center py-20">
+            <div class="animate-spin h-10 w-10 border-4 border-white border-t-transparent rounded-full"></div>
+        </div>
+    `;
+}
 
+async function fetchCollections() {
+    const q = query(collection(db, 'collections'), orderBy('order'));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+}
 
-function loadMainGrid() {
+async function fetchPhotos(collectionId) {
+    const q = query(collection(db, 'collections', collectionId, 'photos'), orderBy('order'));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+}
+
+async function loadMainGrid() {
     const grid = document.getElementById('photo-grid');
-    grid.innerHTML = ''; // Clear existing content
     grid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6';
+    showSpinner(grid);
 
-    Object.entries(photoCollections).forEach(([key, collection]) => {
-        const photo = createPhotoElement(
-            collection.photos[0], // Use the first photo as a thumbnail
-            collection.title,
-            () => window.location.href = `?collection=${key}`
+    const collections = await fetchCollections();
+    grid.innerHTML = '';
+
+    collections.forEach(col => {
+        const el = createPhotoElement(
+            col.coverUrl,
+            col.title,
+            () => window.location.href = `?collection=${col.id}`
         );
-        grid.appendChild(photo);
+        grid.appendChild(el);
     });
 }
 
-function loadCollection(collectionKey) {
-    const collection = photoCollections[collectionKey];
-    if (!collection) {
-        console.error('Collection not found');
+async function loadCollection(collectionId) {
+    const container = document.querySelector('.max-w-7xl');
+    container.innerHTML = `
+        <div class="flex justify-center py-20">
+            <div class="animate-spin h-10 w-10 border-4 border-white border-t-transparent rounded-full"></div>
+        </div>
+    `;
+
+    const [collections, photos] = await Promise.all([
+        fetchCollections(),
+        fetchPhotos(collectionId)
+    ]);
+
+    const col = collections.find(c => c.id === collectionId);
+    if (!col) {
+        container.innerHTML = '<p class="text-center py-20 text-gray-400">Collection not found.</p>';
         return;
     }
 
-    const container = document.querySelector('.max-w-7xl');
-    container.innerHTML = ''; // Clear existing content
+    container.innerHTML = '';
 
-    // Create a header div for the title and back button
     const header = document.createElement('div');
     header.className = 'flex justify-between items-center mb-8 max-sm:flex-col max-sm:items-start max-sm:mt-4 max-sm:gap-2';
     container.appendChild(header);
 
-    // Add the title
     const title = document.createElement('h1');
-    title.textContent = collection.title;
+    title.textContent = col.title;
     title.className = 'text-4xl font-bold max-sm:text-2xl';
     header.appendChild(title);
 
@@ -166,22 +97,21 @@ function loadCollection(collectionKey) {
         Back to All Collections
     `;
     backButton.addEventListener('click', () => {
-        window.location.href = window.location.pathname; // Remove the query parameter
+        window.location.href = window.location.pathname;
     });
     header.appendChild(backButton);
 
-    // Create the photo grid
     const grid = document.createElement('div');
     grid.id = 'photo-grid';
     grid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6';
     container.appendChild(grid);
 
-    collection.photos.forEach(photoSrc => {
-        const photo = createPhotoElement(photoSrc, collection.title, () => {}, true);
-        grid.appendChild(photo);
+    photos.forEach(p => {
+        const el = createPhotoElement(p.url, col.title, () => {}, true);
+        grid.appendChild(el);
     });
 }
-// Main execution
+
 const urlParams = new URLSearchParams(window.location.search);
 const collectionParam = urlParams.get('collection');
 

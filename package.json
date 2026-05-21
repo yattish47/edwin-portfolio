@@ -2,11 +2,13 @@
   "name": "edwin",
   "version": "1.0.0",
   "main": "tailwind.config.js",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "serve": "vite build && live-server dist"
+    "serve": "vite build && live-server dist",
+    "migrate": "node scripts/migrate.js"
   },
   "keywords": [],
   "author": "",
@@ -14,11 +16,13 @@
   "description": "",
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "firebase-admin": "^13.10.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.11",
     "vite": "^5.4.8"
   },
   "dependencies": {
+    "firebase": "^12.13.0",
     "flowbite": "^2.5.2"
   },
   "engines": {

@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
   build: {
@@ -7,21 +9,21 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         second: resolve(__dirname, 'second.html'),
+        admin: resolve(__dirname, 'admin/index.html'),
       }
     }
   },
   css: {
     postcss: {
       plugins: [
-        require('tailwindcss'),
-        require('autoprefixer'),
+        tailwindcss,
+        autoprefixer,
       ],
     }
   },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      // You may not need this alias unless you are using it in your code
       'flowbite': resolve(__dirname, 'node_modules/flowbite')
     }
   },
