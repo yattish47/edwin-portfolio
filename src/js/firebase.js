@@ -5,13 +5,12 @@ import { getAuth } from 'firebase/auth';
 // Replace ALL values below with your Firebase project config.
 // Get this from: Firebase Console → Project Settings → Your apps → SDK setup and configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB_U0Ibj7dKQ1EX_8VSwCBlw7fGGHdiU_8",
-  authDomain: "edwin-portfolio-d63bf.firebaseapp.com",
-  projectId: "edwin-portfolio-d63bf",
-  storageBucket: "edwin-portfolio-d63bf.firebasestorage.app",
-  messagingSenderId: "608042096761",
-  appId: "1:608042096761:web:ed210ca26d24f37faedca8",
-  measurementId: "G-ZV33GZDMY2"
+  apiKey:            import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain:        import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId:         import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket:     import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId:             import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
